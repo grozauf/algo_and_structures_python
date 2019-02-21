@@ -3,3 +3,24 @@
  последовательности чисел. Количество вводимых чисел и цифра,
  которую необходимо посчитать, задаются вводом с клавиатуры.
 """
+
+def count_numeral(n, numeral):
+    res = 0
+    while n > 0:
+        num = n % 10
+        n = n // 10
+        if num == numeral:
+            res += 1
+
+    return res
+
+
+n = int(input("введите количество вводимых чисел: "))
+numeral = int(input("введите искомую цифру: "))
+
+res = 0
+for i in range(n):
+    number = int(input("введите число: "))
+    res += count_numeral(number, numeral)
+
+print("в введённой последовательности чисел искомая цифра встречается %d раз" % res)
