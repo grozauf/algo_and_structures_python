@@ -3,3 +3,19 @@
 Пусть дана строка S длиной N, состоящая только из маленьких латинских букв.
 Требуется найти количество различных подстрок в этой строке.
 """
+
+import hashlib
+
+s = input("Введите строку из маленьких латинских букв: ")
+r = set()
+
+for len_sub in range(1, len(s)):
+    i = 0
+    while i + len_sub <= len(s):
+#        print(s[i:i+len_sub])
+        r.add(hashlib.sha1(s[i:i+len_sub].encode('utf-8')).hexdigest())
+        i += 1
+
+#print(r)
+
+print("Количество различных подстрок в строке '%s' равно %d" % (s, len(r)))
